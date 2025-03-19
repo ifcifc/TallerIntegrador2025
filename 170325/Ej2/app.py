@@ -11,7 +11,10 @@ def suma(a:int, b:int)->int:
 def main():
     num1 = ingreso_numero()
     num2 = ingreso_numero("Ingrese segundo numero: ")
-    print(f"Suma de {num1}+{num2}=",suma(num1, num2))
+    print(f"Suma de {num1} + {num2} =",suma(num1, num2))
+
+    if input("Generar error? (s/n):") == "s":
+        raise Exception("Error")
 
 if __name__ == "__main__":
     main()
