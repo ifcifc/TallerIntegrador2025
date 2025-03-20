@@ -74,3 +74,57 @@
     print(sumar(2,2))
     print(sumar(2))
 ```
+
+# Argumentos Posicionales (*args)
+- Permine pasar a una funcion un numero indeterminado de argumentos en una tupla
+```py
+    def argumentos_posicionales(*args):
+        for i, v in enumerate(args):
+            print(f"arg[{i}] = {v}")
+    argumentos_posicionales(1,2,3)
+```
+
+### Salida
+```py
+    arg[0] = 1
+    arg[1] = 2
+    arg[2] = 3
+```
+
+# Argumentos con Nombre o Clave-Valor (**kwargs)
+- Permite pasar un diccionario como argumentos de una funcion
+```py
+    def argumentos_clave_valor(**kwargs):
+        for clave, valor in kwargs.items():
+            print(f"key[{clave}]: {valor}")
+    argumentos_clave_valor(a=3, b="hola", c=False)
+```
+
+### Salida
+```py
+    key[a]: 3
+    key[b]: hola
+    key[c]: False
+```
+
+# Pasar Argumentos Posicionales/Clave-Valor a un metodo
+```py
+    def operacion(a,b,c): 
+        return (a+c)*b
+        
+    args = [2, 4, 6]
+    kwargs = {
+        "c": 6,
+        "a": 2,
+        "b": 4 
+    }
+
+    print("Args:", operacion(*args))
+    print("Kwargs:", operacion(**kwargs))
+```
+
+### Salida
+```py
+    Args: 32
+    Kwargs: 32
+```
