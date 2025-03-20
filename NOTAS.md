@@ -152,3 +152,20 @@
 | all      | iterable                           | Verifica si todos los elementos son True          |
 | any      | iterable                           | Verifica si algún elemento es True                |
 | reduce   | function, iterable, initializer (opcional) | Reduce un iterable a un solo valor usando una función |
+
+__Los metodos filter, map y reversed devuelven iterables, si el resultado de una de estas operaciones es utilizado por otra, y si se intenta utilizar de nuevo el resultado devolvera una lista vacia (se consume)__
+
+### Ejemplo
+```py
+    vector = list(range(100))
+    vec_filter = filter(lambda v: v%15==0, vector)
+    vec_map = map(lambda v: v/5, vec_filter)
+    print("filter:",list(vec_filter))
+    print("map:",list(vec_map))
+```
+
+### Salida
+```py
+    filter: [] #Al haber sido usado(consumido) por el map devolvera una lista vacia
+    map: [0.0, 3.0, 6.0, 9.0, 12.0, 15.0, 18.0]
+```
