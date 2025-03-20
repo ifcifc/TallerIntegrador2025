@@ -1,4 +1,17 @@
-# Multiplicar STR
+# Índice
+- [Multiplicar String](#multiplicar-string)
+- [Multiplicar Vector](#multiplicar-vector)
+- [Indicar tipo de variable](#indicar-tipo-de-variable)
+- [Generar errores](#generar-errores)
+- [Slice Vector](#slice-vector)
+- [Inverir Vector](#inverir-vector)
+- [Funciones anónimas](#funciones-anónimas)
+- [Argumentos Posicionales (*args)](#argumentos-posicionales-args)
+- [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)
+- [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)
+- [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)
+
+# Multiplicar String
 ```py
     hola = "Hola"
     print(hola * 3)
