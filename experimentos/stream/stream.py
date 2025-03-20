@@ -238,7 +238,7 @@ class Stream:
         Returns:
             El mismo stream
         """
-        self.__source = reversed(self.__source)
+        self.__source = reversed(tuple(self.__source))
         return self
 
     def first(self, predicate: Callable[[Any], bool]=None)->Any:
@@ -249,7 +249,8 @@ class Stream:
             predicate: Función predicado opcional
             
         Returns:
-            El primer elemento que cumpla la condición o el primer elemento si no se proporciona función
+            El primer elemento que cumpla la condición o 
+            el primer elemento si no se proporciona función
         """
         if predicate is None:
             return next(self.__source)
@@ -264,7 +265,8 @@ class Stream:
             predicate: Función predicado opcional
             
         Returns:
-            El último elemento que cumpla la condición o el último elemento si no se proporciona función
+            El último elemento que cumpla la condición o 
+            el último elemento si no se proporciona función
         """
         if predicate is None:
             return next(reversed(tuple(self.__source)))
@@ -284,4 +286,17 @@ class Stream:
         self.__source = islice(self.__source, limit)
         return self
 
+    def count(self, predicate: Callable[[Any], bool]=lambda v: True)->int:
+        """
+        Cuenta el número total de elementos en el stream o 
+        el número total de elementos que cumplan con el predicado.
 
+        Args:
+            predicate: Función predicado opcional
+
+        Returns:
+            El número de elementos en el stream
+        """
+        cp, self.__source = tee(self.__source)
+
+        return sum(1 for _ in cp if predicate(cp))
