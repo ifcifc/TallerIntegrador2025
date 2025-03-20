@@ -128,3 +128,14 @@
     Args: 32
     Kwargs: 32
 ```
+
+# Equivalentes a Stream de java
+| Método   | Argumentos                          | Descripción breve                                   |
+|----------|-------------------------------------|---------------------------------------------------|
+| filter   | function, iterable                 | Filtra elementos de un iterable según una función |
+| map      | function, iterable                 | Aplica una función a cada elemento de un iterable |
+| sorted   | iterable, key (opcional), reverse (opcional) | Ordena elementos de un iterable                  |
+| reversed | iterable                           | Devuelve un iterable invertido                    |
+| all      | iterable                           | Verifica si todos los elementos son True          |
+| any      | iterable                           | Verifica si algún elemento es True                |
+| reduce   | function, iterable, initializer (opcional) | Reduce un iterable a un solo valor usando una función |
