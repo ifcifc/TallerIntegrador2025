@@ -1,4 +1,5 @@
 # Índice
+- [Nomenclatura en Python](#nomenclatura-en-python)
 - [Multiplicar String](#multiplicar-string)
 - [Multiplicar Vector](#multiplicar-vector)
 - [Indicar tipo de variable](#indicar-tipo-de-variable)
@@ -10,6 +11,17 @@
 - [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)
 - [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)
 - [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)
+
+# Nomenclatura en Python
+| Elemento          | Convención de Nomenclatura |
+|--------------------|----------------------------|
+| Variables          | `snake_case`              |
+| Funciones          | `snake_case`              |
+| Clases             | `CamelCase`               |
+| Constantes         | `UPPER_SNAKE_CASE`        |
+| Módulos            | `snake_case`              |
+| Paquetes           | `snake_case`              |
+| Métodos/Atributos Privados   | `_snake_case`             |
 
 # Multiplicar String
 ```py
