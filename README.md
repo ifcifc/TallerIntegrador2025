@@ -6,11 +6,14 @@
 - [Generar errores](#generar-errores)
 - [Slice Vector](#slice-vector)
 - [Inverir Vector](#inverir-vector)
-- [Funciones anónimas](#funciones-anónimas)
+- [Funciones lambda](#funciones-lambda)
+- [Funcion for de una linea](#funcion-for-de-una-linea)
 - [Argumentos Posicionales (*args)](#argumentos-posicionales-args)
 - [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)
 - [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)
 - [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)
+- [Iterable](#iterable)
+- [Generadores](#generadores)
 
 # Nomenclatura en Python
 | Elemento          | Convención de Nomenclatura |
@@ -80,7 +83,7 @@
     [3, 2, 1]
 ```
 
-# Funciones anónimas
+# Funciones lambda
 - Funciones de una sola linea
 ```py
     lambda argumentos : logica
@@ -96,8 +99,20 @@
 ```py
     sumar = lambda a, b=0: a + b
 
+    lb_condicional = lambda a: "par" if a%2==0 else "impar"
+
     print(sumar(2,2))
     print(sumar(2))
+    print(lb_condicional(2))
+```
+
+# Funcion for de una linea
+```py
+    #Crea una lista de elementos [0, 0, 0, 3, 0, 0, 6, 0, 0, 9]
+    for_condicional = [v if v%3==0 else 0 for v in range(10)]
+
+    #Crea un generador iterable de 10 elementos, no una tupla
+    generator = (v if v%3==0 else 0 for v in range(10))
 ```
 
 # Argumentos Posicionales (*args)
@@ -180,4 +195,93 @@ __Los metodos filter, map y reversed devuelven iterables, si el resultado de una
 ```py
     filter: [] #Al haber sido usado(consumido) por el map devolvera una lista vacia
     map: [0.0, 3.0, 6.0, 9.0, 12.0, 15.0, 18.0]
+```
+
+# Iterable
+__Los iterables son un conjunto de elemento que se pueden recorrer pero que una vez echo se consumen__
+
+- Se pueden crear a travez del metodo iter(...) o con un generador
+
+```py
+    it = iter([...])
+    gen = (random.randint(0, 100) for _ in range(2))
+
+    print(next(gen))
+    print(next(gen))
+    print(next(gen))
+```
+
+### Salida
+```py
+    21
+    49
+    StopIteration
+```
+
+## Metodo next(iterable) obtiene el siguiente elemento
+```py
+    it = iter([1,2,3])
+    print(next(it))
+    next(it)
+    print(next(it))
+
+    #Obtener el primer valor que cumpla cierta condicion
+    it = range(50)
+    print(next((v for v in it if v%7==0 and v>15)))
+```
+### Salida
+```py
+    1
+    3
+    21
+```
+
+## Metodo tee(iterable) copia un iterable
+```py
+    from itertools import tee
+
+    it = iter([1,2,3])
+
+    cpy, it = tee(it)
+```
+## Metodo islice(iterable, stop) crea de un iterable hasta una cantidad especificada de elementos
+```py
+    from itertools import islice
+    ls = [1,2,3,4,5,6]
+    it = islice(ls, 3) 
+    print(list(it))
+```
+
+### Salida
+```py
+    [1,2,3]
+```
+
+## Metodo reduce(func, iterable) aplica una funcion a un iterable reduciéndolo a un único valor
+```py
+    from functools import reduce
+    ls = [1,2,3,4,5,6]
+    print(reduce(lambda a,b: a+b, ls))
+```
+
+### Salida
+```py
+    21
+```
+
+# Generadores
+__Es una forma de crear un iterador, este este cada vez que se intenta obtener un elemento lo genera y lo devuelve, permitiendo ahorrar memoria al no tener todos los elementos cargados de golpe__
+
+```py
+    import random
+    def random_generator(limit):
+        for _ in range(limit):
+            yield random.randint(0, 100)
+    
+    print(list(random_generator(3)))
+```
+
+### Salida
+```py
+    [21, 36, 36]
 ```
