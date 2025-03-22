@@ -1,20 +1,36 @@
 # Índice
-- [Nomenclatura en Python](#nomenclatura-en-python)
-- [Multiplicar String](#multiplicar-string)
-- [Multiplicar Vector](#multiplicar-vector)
-- [Indicar tipo de variable](#indicar-tipo-de-variable)
-- [Generar errores](#generar-errores)
-- [Slice Vector](#slice-vector)
-- [Inverir Vector](#inverir-vector)
-- [Funciones lambda](#funciones-lambda)
-- [Funcion for de una linea](#funcion-for-de-una-linea)
-- [Argumentos Posicionales (*args)](#argumentos-posicionales-args)
-- [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)
-- [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)
-- [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)
-- [Iterable](#iterable)
+### Conceptos Básicos  
+- [Nomenclatura en Python](#nomenclatura-en-python)  
+- [Indicar tipo de variable](#indicar-tipo-de-variable)  
+- [Generar errores](#generar-errores)  
+
+### Operaciones con Cadenas y Vectores  
+- [Multiplicar String](#multiplicar-string)  
+- [Multiplicar Vector](#multiplicar-vector)  
+- [Slice Vector](#slice-vector)  
+- [Inverir Vector](#inverir-vector)  
+
+### Funciones y Métodos  
+- [Funciones lambda](#funciones-lambda)  
+- [Funcion for de una linea](#funcion-for-de-una-linea)  
+- [Funcion Help](#funcion-help)  
+
+### Manejo de Argumentos en Funciones  
+- [Argumentos Posicionales (*args)](#argumentos-posicionales-args)  
+- [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)  
+- [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)  
+
+### Operaciones con Iterables  
+- [Iterable](#iterable)  
+    - [Método next](#metodo-nextiterable-obtiene-el-siguiente-elemento)
+    - [Método tee](#metodo-teeiterable-copia-un-iterable)
+    - [Método islice](#metodo-isliceiterable-stop-crea-de-un-iterable-hasta-una-cantidad-especificada-de-elementos)
+    - [Método reduce](#metodo-reducefunc-iterable-aplica-una-funcion-a-un-iterable-reduciéndolo-a-un-único-valor)
 - [Generadores](#generadores)
-- [Funcion Help](#funcion-help)
+    - [Yield From](#yield-from)
+- [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)  
+
+
 
 # Nomenclatura en Python
 | Elemento          | Convención de Nomenclatura |
@@ -228,7 +244,7 @@ __Los iterables son un conjunto de elemento que se pueden recorrer pero que una 
 
     #Obtener el primer valor que cumpla cierta condicion
     it = range(50)
-    print(next((v for v in it if v%7==0 and v>15)))
+    print(next((v fofor v iii it i v%7==0 andaandd v>15)))
 ```
 ### Salida
 ```py
