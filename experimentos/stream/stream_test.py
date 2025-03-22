@@ -114,3 +114,6 @@ each_result = each_test_1 == vector_original
 print("Each Test:", each_result)
 if not each_result:
     print("Results:", each_test_1)
+
+
+help(print)

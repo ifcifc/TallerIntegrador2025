@@ -14,6 +14,7 @@
 - [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)
 - [Iterable](#iterable)
 - [Generadores](#generadores)
+- [Funcion Help](#funcion-help)
 
 # Nomenclatura en Python
 | Elemento          | Convención de Nomenclatura |
@@ -284,4 +285,48 @@ __Es una forma de crear un iterador, este este cada vez que se intenta obtener u
 ### Salida
 ```py
     [21, 36, 36]
+```
+
+## Yield From
+__Retorna los valores generador por otro generador__
+
+```py
+    def yield_from():
+        a = [1, 2, 3]
+        b = "Hola"
+        yield from a
+        yield from b
+
+    def random_cats(limit=3):
+        yield from zip(get_cat(), random_generator(limit))
+
+print(list(random_cats()))
+print(list(yield_from()))
+```
+### Salida
+```py
+    [('Persa', 27), ('Siamés', 91), ('Maine Coon', 80)]
+    [1, 2, 3, 'H', 'o', 'l', 'a']
+```
+
+# Funcion help
+__Permite obtener la documentación de objetos como funciones, clases, módulos, variables, etc.__
+
+```py
+    help(print)
+```
+
+### Salida
+```sh
+    print(*args, sep=' ', end='\n', file=None, flush=False)
+        Prints the values to a stream, or to sys.stdout by default.
+
+        sep
+        string inserted between values, default a space.
+        end
+        string appended after the last value, default a newline.
+        file
+        a file-like object (stream); defaults to the current sys.stdout.
+        flush
+        whether to forcibly flush the stream.
 ```
