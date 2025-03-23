@@ -33,6 +33,7 @@ def game_logic():
 
         ACTIVE_SCENE.update(GameState.fixed_delta_time)
 
+
 def render():
     clock = pygame.time.Clock()
 
@@ -50,12 +51,14 @@ def render():
         ACTIVE_SCENE.draw(screen)
 
         pygame.display.flip()
+
+        ACTIVE_SCENE.update(GameState.delta_time)
     
 
 logic_thread = threading.Thread(target=game_logic)
 
-logic_thread.start()
+#logic_thread.start()
 render()
 
-logic_thread.join()
+#logic_thread.join()
 pygame.quit()
