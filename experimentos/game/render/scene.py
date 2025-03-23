@@ -21,6 +21,8 @@ class Scene:
         return True
     
     def draw(self, screen:Surface):
+        screen.fill("black")
+        
         draw_object = filter(lambda obj: not obj.is_hidden(), self._objects.values())
         for obj in draw_object:
             obj.draw(screen)

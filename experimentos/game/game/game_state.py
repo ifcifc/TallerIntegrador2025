@@ -8,13 +8,13 @@ from render.scene import Scene
 
 class GameState:
     quit: bool = False
-    _active_scene: Scene
-    _global_scripts: List[Script]
+    _active_scene: Scene = None
+    _global_scripts: List[Script] = []
 
 
     @staticmethod
     def update(func:Callable[[Event], Any]=None):
-        scripts = filter(lambda s: s.is_disabled(), GameState._global_scripts) 
+        scripts = filter(lambda s: not s.is_disabled(), GameState._global_scripts) 
 
         for script in scripts:
             script.update()
@@ -30,6 +30,9 @@ class GameState:
     def get_active_scene() -> Scene:
         return GameState._active_scene
     
+    @staticmethod
+    def add_global_script(script:Script):
+        GameState._global_scripts.append(script)
 
     @staticmethod
     def set_active_scene(scene: Scene) -> Scene:

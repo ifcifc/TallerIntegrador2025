@@ -7,6 +7,14 @@ VENV_DIR=".venv"
 echo "Creando entorno virtual en el directorio $VENV_DIR..."
 python3 -m venv $VENV_DIR
 
+
+# Verificar si el sistema usa una CPU Intel
+if grep -q "Intel" /proc/cpuinfo; then
+    echo "Sistema Intel detectado. Ejecutando comandos..."
+    echo "Usar LD_PRELOAD si crashea"
+    echo "export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
+fi
+
 # Activar el entorno virtual
 echo "Activando el entorno virtual..."
 source $VENV_DIR/bin/activate

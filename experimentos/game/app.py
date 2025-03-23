@@ -1,30 +1,40 @@
 import pygame
 
+pygame.init()
+
 from actors.player import Player
+from actors.text import Text
 from game.game_state import GameState
+from game.scene_controller import SceneController
 from render.scene import Scene
 
-pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 
-scene: Scene = Scene()
+scene1: Scene = Scene()
+scene2: Scene = Scene()
 
-scene.add_object(Player())
+scene1.add_object(Player())
+scene2.add_object(Text())
 
-GameState.set_active_scene(scene)
+#GameState.set_active_scene(scene)
+GameState.add_global_script(SceneController(scene1, scene2))
+
 
 while not GameState.quit:
+    ACTIVE_SCENE = GameState.get_active_scene()
     GameState.update()
-    active_scene = GameState.get_active_scene()
     
     dt = clock.tick(60) / 1000
 
-    screen.fill("black")
+    pygame.display.set_caption(f"fps: {(clock.get_fps())}")
 
-    active_scene.draw(screen)
+    if ACTIVE_SCENE is None:
+        continue    
+    
+    ACTIVE_SCENE.draw(screen)
 
     pygame.display.flip()
 
-    active_scene.update(dt)
+    ACTIVE_SCENE.update(dt)
     
