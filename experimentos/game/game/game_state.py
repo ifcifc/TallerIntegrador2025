@@ -8,6 +8,8 @@ from render.scene import Scene
 
 class GameState:
     quit: bool = False
+    delta_time: float = 0
+    fixed_delta_time: float = 0
     _active_scene: Scene = None
     _global_scripts: List[Script] = []
 

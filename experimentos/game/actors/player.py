@@ -4,8 +4,8 @@ import pygame
 from render.render_object import RenderObject
 
 class Player(RenderObject):
-    velocity_up: float = 300
-    velocity_forward: float = 300
+    velocity_up: float = 300*2
+    velocity_forward: float = 300*2
 
     def __init__(self):
         super().__init__(Rect(100,100,64,64))
