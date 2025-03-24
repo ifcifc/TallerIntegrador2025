@@ -14,6 +14,7 @@ class Scene:
 
     def add_object(self, render_object: RenderObject) -> bool:
         if render_object.get_id() is None:
+            #no se deberia de hacer, solucionar
             render_object._object_id = uuid4()
 
         if render_object.get_id() in self._objects: 
