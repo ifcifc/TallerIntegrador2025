@@ -1,10 +1,10 @@
-import threading
 import pygame
 
 pygame.init()
 
 from actors.player import Player
 from actors.text import Text
+from actors.box import Box
 from game.game_state import GameState
 from game.scene_controller import SceneController
 from render.scene import Scene
@@ -15,11 +15,16 @@ scene1: Scene = Scene()
 scene2: Scene = Scene()
 
 scene1.add_object(Player())
+scene2.add_object(Player())
+scene2.add_object(Box())
 scene2.add_object(Text())
 
 #GameState.set_active_scene(scene)
 GameState.add_global_script(SceneController(scene1, scene2))
 
+GameState.set_active_scene(scene2)
+
+#Interpolar es dificil
 def game_logic():
     logic_clock = pygame.time.Clock() 
 
@@ -55,7 +60,7 @@ def render():
         ACTIVE_SCENE.update(GameState.delta_time)
     
 
-logic_thread = threading.Thread(target=game_logic)
+#logic_thread = threading.Thread(target=game_logic)
 
 #logic_thread.start()
 render()

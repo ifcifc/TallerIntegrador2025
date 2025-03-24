@@ -1,4 +1,5 @@
-from uuid import UUID, uuid4
+from uuid import UUID
+
 from pygame import Rect, Surface
 
 class RenderObject:
@@ -6,7 +7,7 @@ class RenderObject:
     _object_id: UUID
     _is_hidden:bool
 
-    def __init__(self, rect=Rect(0,0,0,0), object_id=uuid4()):
+    def __init__(self, rect=Rect(0,0,0,0), object_id=None):
         self._rect = rect
         self._object_id = object_id
         self._is_hidden = False

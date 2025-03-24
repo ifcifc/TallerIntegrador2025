@@ -1,7 +1,7 @@
-from typing import Dict
-from uuid import UUID
+from typing import Dict, List
+from uuid import UUID, uuid4
 
-from pygame import Surface
+from pygame import Rect, Surface
 
 from render.render_object import RenderObject
 
@@ -13,6 +13,9 @@ class Scene:
         self._objects = {}
 
     def add_object(self, render_object: RenderObject) -> bool:
+        if render_object.get_id() is None:
+            render_object._object_id = uuid4()
+
         if render_object.get_id() in self._objects: 
             return False
 
@@ -30,3 +33,11 @@ class Scene:
     def update(self, delta:float):
         for obj in self._objects.values():
             obj.update(delta)
+
+    def find_collisions(self, r_obj:RenderObject|Rect)->List[RenderObject]:
+        if isinstance(r_obj, Rect):
+            return r_obj.collideobjectsall(tuple(self._objects.values()), key=lambda obj: obj.get_rect())
+        else:
+            r_obj_id = r_obj.get_id()
+            flt = filter(lambda obj: obj.get_id()!=r_obj_id, self._objects.values())
+            return r_obj.get_rect().collideobjectsall(tuple(flt), key=lambda obj: obj.get_rect())
