@@ -1,37 +1,40 @@
 # Índice
-### Conceptos Básicos  
+
+## 1. Fundamentos de Python  
 - [Nomenclatura en Python](#nomenclatura-en-python)  
 - [Indicar tipo de variable](#indicar-tipo-de-variable)  
 - [Generar errores](#generar-errores)  
+- [Función help](#función-help)  
 
-### Operaciones con Listas  
+## 2. Operaciones con Cadenas y Listas  
 - [Multiplicar String](#multiplicar-string)  
-- [Multiplicar Lista](#multiplicar-vector)  
-- [Slice Lista](#slice-vector)  
-- [Inverir Lista](#inverir-vector) 
-- [Extender Lista](#extender-lista) 
-- [Contar elementos de una Lista](#contar-elementos-de-una-lista)
+- [Multiplicar Lista](#multiplicar-lista)  
+- [Extender Lista](#extender-lista)  
+- [Contar elementos de una Lista](#contar-elementos-de-una-lista)  
+- [Slice Lista](#slice-lista)  
+- [Invertir Lista](#invertir-lista)  
 
-### Funciones y Métodos  
+## 3. Estructuras de Datos  
+- [Sets](#sets)  
+- [Iterable](#iterable)  
+  - [Método next()](#método-next)  
+  - [Método tee()](#método-tee)  
+  - [Método islice()](#método-islice)  
+  - [Método reduce()](#método-reduce)  
+
+## 4. Funciones y Métodos Avanzados  
 - [Funciones lambda](#funciones-lambda)  
-- [Funcion for de una linea](#funcion-for-de-una-linea)  
-- [Funcion Help](#funcion-help)  
-
-### Manejo de Argumentos en Funciones  
+- [Función for de una línea](#función-for-de-una-línea)  
 - [Argumentos Posicionales (*args)](#argumentos-posicionales-args)  
 - [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)  
-- [Pasar Argumentos Posicionales/Clave-Valor a un metodo](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)  
+- [Pasar Argumentos Posicionales/Clave-Valor a un método](#pasar-argumentos-posicionalesclave-valor-a-un-método)  
 
-### Operaciones con Iterables  
-- [Iterable](#iterable)  
-    - [Método next](#metodo-nextiterable-obtiene-el-siguiente-elemento)
-    - [Método tee](#metodo-teeiterable-copia-un-iterable)
-    - [Método islice](#metodo-isliceiterable-stop-crea-de-un-iterable-hasta-una-cantidad-especificada-de-elementos)
-    - [Método reduce](#metodo-reducefunc-iterable-aplica-una-funcion-a-un-iterable-reduciéndolo-a-un-único-valor)
-    - [Sets](#sets)
-- [Generadores](#generadores)
-    - [Yield From](#yield-from)
-- [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)  
+## 5. Programación Funcional en Python  
+- [Equivalentes a Stream de Java](#equivalentes-a-stream-de-java)  
+
+## 6. Generadores  
+- [Generadores](#generadores)  
+  - [Yield From](#yield-from)  
 
 
 
@@ -138,6 +141,7 @@
 ```
 # Sets
 ```py
+    d = [1,1,2,3,5,5]
     e = set(d)
     print(d)
     print(e)
