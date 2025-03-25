@@ -4,11 +4,13 @@
 - [Indicar tipo de variable](#indicar-tipo-de-variable)  
 - [Generar errores](#generar-errores)  
 
-### Operaciones con Cadenas y Vectores  
+### Operaciones con Listas  
 - [Multiplicar String](#multiplicar-string)  
-- [Multiplicar Vector](#multiplicar-vector)  
-- [Slice Vector](#slice-vector)  
-- [Inverir Vector](#inverir-vector)  
+- [Multiplicar Lista](#multiplicar-vector)  
+- [Slice Lista](#slice-vector)  
+- [Inverir Lista](#inverir-vector) 
+- [Extender Lista](#extender-lista) 
+- [Contar elementos de una Lista](#contar-elementos-de-una-lista)
 
 ### Funciones y Métodos  
 - [Funciones lambda](#funciones-lambda)  
@@ -26,6 +28,7 @@
     - [Método tee](#metodo-teeiterable-copia-un-iterable)
     - [Método islice](#metodo-isliceiterable-stop-crea-de-un-iterable-hasta-una-cantidad-especificada-de-elementos)
     - [Método reduce](#metodo-reducefunc-iterable-aplica-una-funcion-a-un-iterable-reduciéndolo-a-un-único-valor)
+    - [Sets](#sets)
 - [Generadores](#generadores)
     - [Yield From](#yield-from)
 - [Equivalentes a Stream de java](#equivalentes-a-stream-de-java)  
@@ -53,7 +56,7 @@
     "HolaHolaHola"
 ```
 
-# Multiplicar Vector
+# Multiplicar Lista
 ```py
     hola = ["Hola"]
     print(hola * 3)
@@ -61,6 +64,40 @@
 ### Salida
 ```py
     ["Hola", "Hola", "Hola"]
+```
+
+# Extender Lista
+```py
+    a = [12,9,10]
+    b = [4,5,6]
+
+    a.extend(b)
+
+    #Concatena las lista en una nueva, funciona con tuplas
+    c = a + b
+
+    print(a)
+    print(c)
+```
+### Salida
+```py
+    [12, 9, 10, 4, 5, 6]
+    [12, 9, 10, 4, 5, 6]
+```
+
+# Contar elementos de una Lista
+```py
+    c = [12,9,10]*2 + [4,5,6]
+
+    print(c)
+    print(c.count(12))
+    print(c.count(4))
+```
+### Salida
+```py
+    [12, 9, 10, 4, 5, 6, 12, 9, 10, 4, 5, 6, 4, 5, 6]
+    2
+    1
 ```
 
 # Indicar tipo de variable
@@ -76,13 +113,13 @@
     raise Exception(MSG)
 ```
 
-# Slice Vector
+# Slice Lista
 - Slice 3 argumentos [desde:hasta:salto], por defecto salto tiene el valor 1
 ```py
-    Vector original: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    Vector [:5:1] o [:5]: [0, 1, 2, 3, 4]
-    Vector [:5:2]: [0, 2, 4]
-    Vector [:5:2]: [0, 3]
+    Lista original: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    Lista [:5:1] o [:5]: [0, 1, 2, 3, 4]
+    Lista [:5:2]: [0, 2, 4]
+    Lista [:5:2]: [0, 3]
 ```
 ### Ejemplo
 ```py
@@ -90,7 +127,7 @@
     print(vec[:5])
 ```
 
-# Inverir Vector
+# Inverir Lista
 ```py
     hola = [1,2,3]
     print(hola[::-1])
@@ -98,6 +135,25 @@
 ### Salida
 ```py
     [3, 2, 1]
+```
+# Sets
+```py
+    e = set(d)
+    print(d)
+    print(e)
+    print({1,1,2,3,5,5})
+
+    e.add(3)
+    e.add(16)
+
+    print(e)
+```
+### Salida
+```py
+    [1, 1, 2, 3, 5, 5]
+    {1, 2, 3, 5}
+    {1, 2, 3, 5}
+    {1, 2, 3, 5, 16}
 ```
 
 # Funciones lambda
