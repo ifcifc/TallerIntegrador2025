@@ -6,6 +6,7 @@
 - [Generar errores](#generar-errores)  
 - [Función help](#función-help)  
 - [Metodos Magicos](#metodos-magicos)
+- [Crear un entorno virtual](#crear-un-entorno-virtual)
 
 ## 2. Operaciones con Cadenas y Listas  
 - [Multiplicar String](#multiplicar-string)  
@@ -77,6 +78,18 @@ __Los metodos magicos son metodos que poseen las clases, se identifican con un '
 
         def __del__(self):
             print("destructor")
+```
+
+# Crear un entorno virtual
+```sh
+    #Crear entorno
+    python3 -m venv [NOMBRE_VENV]
+
+    #Activar entorno
+    source [NOMBRE_VENV]/bin/activate
+
+    #Desactivar entorno
+    deactivate
 ```
 
 # Multiplicar String
