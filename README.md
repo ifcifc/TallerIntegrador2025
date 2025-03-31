@@ -29,7 +29,8 @@
 - [Función for de una línea](#función-for-de-una-línea)  
 - [Argumentos Posicionales (*args)](#argumentos-posicionales-args)  
 - [Argumentos con Nombre o Clave-Valor (**kwargs)](#argumentos-con-nombre-o-clave-valor-kwargs)  
-- [Pasar Argumentos Posicionales/Clave-Valor a un método](#pasar-argumentos-posicionalesclave-valor-a-un-método)  
+- [Pasar Argumentos Posicionales/Clave-Valor a un método](#pasar-argumentos-posicionalesclave-valor-a-un-metodo)  
+- [Decoradores](#decoradores)
 
 ## 5. Programación Funcional en Python  
 - [Equivalentes a Stream de Java](#equivalentes-a-stream-de-java)  
@@ -287,6 +288,36 @@ __Los metodos magicos son metodos que poseen las clases, se identifican con un '
 ```py
     Args: 32
     Kwargs: 32
+```
+
+# Decoradores
+__Son funciones que envuelven a otra y ejecutan un codigo antes y despues del mismo__
+
+```py
+    def decorador1(func):
+        #Devuelve otra funcion que ara algo antes y despues de la funcion decorada
+        #wrapper recibe los argumentos que seran pasados a la funcion decorada
+        def wrapper(value):
+            print("Ejecutando decorador1")
+            ret = func(value)
+            print("Fin de decorador1")
+            return ret
+        return wrapper
+
+    @decorador1
+    def funcion_decorada(value):
+        print("Ejecutando funcion_decorada")
+        return value ** 2
+
+    print(funcion_decorada(5))
+```
+
+### Salida
+```py
+    Ejecutando decorador1
+    Ejecutando funcion_decorada
+    Fin de decorador1
+    25
 ```
 
 # Equivalentes a Stream de java
