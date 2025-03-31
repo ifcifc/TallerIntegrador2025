@@ -5,6 +5,7 @@
 - [Indicar tipo de variable](#indicar-tipo-de-variable)  
 - [Generar errores](#generar-errores)  
 - [Función help](#función-help)  
+- [Metodos Magicos](#metodos-magicos)
 
 ## 2. Operaciones con Cadenas y Listas  
 - [Multiplicar String](#multiplicar-string)  
@@ -48,6 +49,35 @@
 | Módulos            | `snake_case`              |
 | Paquetes           | `snake_case`              |
 | Métodos/Atributos Privados   | `_snake_case`             |
+
+# Metodos Magicos
+__Los metodos magicos son metodos que poseen las clases, se identifican con un '\_\_[NOMBRE]\_\_' y su funcion es permitir que la clase realize distintas operaciones o interactue con funciones internas de python, estos son llamados automaticamente por python en distintas ocaciones__
+
+| Método Mágico       | Descripción                                  |
+|---------------------|----------------------------------------------|
+| `__init__`          | Constructor, inicializa el objeto            |
+| `__str__`           | Representación legible del objeto (str())    |
+| `__len__`           | Devuelve la longitud del objeto (len())      |
+| `__getitem__`       | Acceso a elementos mediante índice [ ]       |
+| `__setitem__`       | Asignación de elementos mediante índice [ ]  |
+| `__delitem__`       | Eliminación de elementos mediante índice [ ] |
+| `__iter__`          | Devuelve un iterador (iter())                |
+| `__next__`          | Obtiene el siguiente elemento de un iterador |
+| `__call__`          | Permite llamar al objeto como función        |
+| `__eq__`            | Define igualdad (==)                         |
+| `__lt__`            | Define comparación menor que (<)             |
+| `__add__`           | Suma de objetos (+)                          |
+| `__sub__`           | Resta de objetos (-)                         |
+| `__del__`           | Destructor, se ejecuta al eliminar el objeto |
+
+```py
+    class test:
+        def __init__(self):
+            print("constructor")
+
+        def __del__(self):
+            print("destructor")
+```
 
 # Multiplicar String
 ```py
