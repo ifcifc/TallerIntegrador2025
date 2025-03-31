@@ -17,7 +17,8 @@
 - [Invertir Lista](#invertir-lista)  
 
 ## 3. Estructuras de Datos  
-- [Sets](#sets)  
+- [Sets](#sets)
+- [Shelve](#shelve)  
 - [Iterable](#iterable)  
   - [Método next()](#método-next)  
   - [Método tee()](#método-tee)  
@@ -202,6 +203,17 @@ __Los metodos magicos son metodos que poseen las clases, se identifican con un '
     {1, 2, 3, 5}
     {1, 2, 3, 5}
     {1, 2, 3, 5, 16}
+```
+
+# Shelve
+__Funciona como un diccionario, pero almacena los datos en disco__
+```py
+    import shelve
+    with shelve.open('dict.shelve') as dic:
+        if '888' not in dic:
+            for i in range(1, 9999):
+                dic[str(i)] = i ** 2
+        print(dic['888'])
 ```
 
 # Funciones lambda
