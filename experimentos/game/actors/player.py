@@ -28,7 +28,7 @@ class Player(RenderObject):
         pos_bottom = self._rect.bottom
         grav = 0
         collisions = GameState.get_active_scene().find_collisions(self)
-        collisions = tuple(filter(lambda obj: (pos_bottom-obj.get_rect().bottom)<0, collisions))
+        collisions = tuple(filter(lambda obj: (pos_bottom<obj.get_rect().bottom), collisions))
         #pos_y = min(collisions, key=lambda obj: obj.get_rect().y)
         if len(collisions)==0:
             grav = Player.gravity * delta
