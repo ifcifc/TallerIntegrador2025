@@ -22,7 +22,7 @@ def init_db():
             #le saca el .py al nombre del archivo
             nombre_modelo = archivo[:-3]
             #importa el modulo
-            modulo = importlib.import_module(f"{MODELS_PATH.replace("/", ".")}.{nombre_modelo}")
+            modulo = importlib.import_module(f"{MODELS_PATH.replace('/', '.')}.{nombre_modelo}")
             print(f'Modelo {nombre_modelo} cargado: {modulo}')
 
     # Crear todas las tablas

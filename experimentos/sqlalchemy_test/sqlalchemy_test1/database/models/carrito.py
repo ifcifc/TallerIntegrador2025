@@ -11,9 +11,7 @@ class Carrito(Base):
     cantidad = Column(Integer, nullable=False, default=1)
     is_closed = Column(Boolean, default=False)
 
-    # Relaciones opcionales (si quieres acceder a los objetos relacionados)
-    #articulo = relationship("Articulo", back_populates="carritos")
-    #usuario = relationship("Usuario", back_populates="carritos")
+    articulo = relationship("Articulo")
 
     def __init__(self, articulo_id, usuario_id, cantidad=1, is_closed=False):
         self.articulo_id = articulo_id
