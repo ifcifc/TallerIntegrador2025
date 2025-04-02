@@ -1,19 +1,20 @@
 from uuid import UUID
 
-from pygame import Rect, Surface
+from pygame import Surface
+
+from render.transform import Transform
 
 class RenderObject:
-    _rect: Rect
     _object_id: UUID
     _is_hidden:bool
+    _transform: Transform
 
-    def __init__(self, rect=Rect(0,0,0,0), object_id=None):
-        self._rect = rect
+    def __init__(self, transform=Transform(), object_id=None):
+        if not isinstance(transform, Transform):
+            raise TypeError("transform no es una instancia de Transform") 
+        self._transform = transform
         self._object_id = object_id
         self._is_hidden = False
-    
-    def get_rect(self) -> Rect:
-        return self._rect
     
     def get_id(self) -> UUID:
         return self._object_id
@@ -30,3 +31,5 @@ class RenderObject:
     def update(self, delta:float):
         pass
     
+    def get_transform(self)->Transform:
+        return self._transform

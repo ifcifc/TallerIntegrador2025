@@ -2,6 +2,7 @@ from typing import Dict, List
 from uuid import UUID, uuid4
 
 from pygame import Rect, Surface
+import pygame
 
 from render.render_object import RenderObject
 
@@ -41,4 +42,4 @@ class Scene:
         else:
             r_obj_id = r_obj.get_id()
             flt = filter(lambda obj: obj.get_id()!=r_obj_id, self._objects.values())
-            return r_obj.get_rect().collideobjectsall(tuple(flt), key=lambda obj: obj.get_rect())
+            return r_obj.get_transform().get_rect().collideobjectsall(tuple(flt), key=lambda obj: obj.get_transform().get_rect())

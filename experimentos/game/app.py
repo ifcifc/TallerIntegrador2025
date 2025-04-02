@@ -43,21 +43,22 @@ def render():
     clock = pygame.time.Clock()
 
     while not GameState.quit:
-        ACTIVE_SCENE = GameState.get_active_scene()
+        active_scene = GameState.get_active_scene()
+        
         GameState.update()
         
         GameState.delta_time = clock.tick(60) / 1000
 
         pygame.display.set_caption(f"fps: {(clock.get_fps())}")
 
-        if ACTIVE_SCENE is None:
+        if active_scene is None:
             continue    
         
-        ACTIVE_SCENE.draw(screen)
+        active_scene.draw(screen)
 
         pygame.display.flip()
 
-        ACTIVE_SCENE.update(GameState.delta_time)
+        active_scene.update(GameState.delta_time)
     
 
 #logic_thread = threading.Thread(target=game_logic)
