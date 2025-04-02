@@ -11,6 +11,9 @@
         },
         {
             "path": "experimentos/stream"
+        },
+        {
+            "path": "experimentos/sqlalchemy_test/sqlalchemy_test1"
         }
     ],
     "settings": {}
