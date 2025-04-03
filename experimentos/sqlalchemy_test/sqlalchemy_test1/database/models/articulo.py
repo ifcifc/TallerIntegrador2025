@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float
 from database.database import Base
-from database.models.carrito_articulo import CarritoArticulo
 
 class Articulo(Base):
     __tablename__ = 'articulo'

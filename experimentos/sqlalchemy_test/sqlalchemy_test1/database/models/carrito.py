@@ -12,9 +12,12 @@ class Carrito(Base):
     is_closed = Column(Boolean, default=False)
 
     articulo = relationship("Articulo")
-
+    usuario = relationship("Usuario", back_populates="carritos")
+    
     def __init__(self, articulo_id, usuario_id, cantidad=1, is_closed=False):
         self.articulo_id = articulo_id
         self.usuario_id = usuario_id
         self.cantidad = cantidad
         self.is_closed = is_closed
+
+
