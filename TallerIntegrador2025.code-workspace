@@ -14,6 +14,9 @@
         },
         {
             "path": "experimentos/sqlalchemy_test/sqlalchemy_test1"
+        },
+        {
+            "path": "experimentos/flask/flask_test1"
         }
     ],
     "settings": {}
