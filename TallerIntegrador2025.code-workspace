@@ -17,6 +17,9 @@
         },
         {
             "path": "experimentos/flask/flask_test1"
+        },
+        {
+            "path": "experimentos/fastapi/01-test"
         }
     ],
     "settings": {}
