@@ -51,4 +51,4 @@ for v in _filter(lambda x:x%5==0, _map(lambda x:x**2, _list)):
 print("Max")
 print(_max(_list_obj, key=lambda x: x["value"]))
 print(_max(_list))
-print(_max([]))
+print(_max([], default="┻━┻︵ \(°□°)/ ︵ ┻━┻"))
