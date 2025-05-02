@@ -1,6 +1,9 @@
 Flask==3.1.0
 Flask-SQLAlchemy==3.1.1
 flask-marshmallow==1.3.0
-marshmallow 
-marshmallow-sqlalchemy
-flask-jwt-extended
+marshmallow==4.0.0
+marshmallow-sqlalchemy==1.4.2
+flask-jwt-extended==4.7.1
+wireup==1.0.2
+cachetools
+eval-type-backport

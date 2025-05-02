@@ -2,10 +2,10 @@ from flask_marshmallow import Schema
 from sqlalchemy import Column, Integer, String
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import database
+from core.database import db
 from marshmallow import Schema, fields, validate, ValidationError
 
-class UsuarioModel(database.db.Model):
+class UsuarioModel(db.Model):
     __tablename__ = 'usuarioModel'
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
@@ -30,7 +30,7 @@ class UsuarioModelSchema(SQLAlchemyAutoSchema):
         load_instance = True
         include_relationships = False  # No incluir relaciones
         include_fk = False  # No incluir claves foráneas
-        sqla_session = database.db.session
+        sqla_session = db.session
     
     # Solo especificamos que name es requerido (como en el modelo original)
     name = auto_field(required=True)

@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask_jwt_extended import jwt_required
 from routes.api import route_info
-from database import db
+from core.database import db
 import uuid
 
 from routes.api.models.api_model import ApiModel, ApiModelSchema
@@ -19,3 +19,4 @@ def index():
     query = db.session.query(ApiModel).all()
 
     return jsonify(api_models_schema.dump(query))
+

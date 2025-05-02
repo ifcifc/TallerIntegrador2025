@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flask: Debug con Hot Reload",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/app.py", // Ajusta al nombre y ruta de tu archivo principal
+      "console": "integratedTerminal",
+      "justMyCode": true,
+       //Por que esto funciona con Flask, es un misterio 
+       //o talvez programadores perezosos incapaces de darle un nombre mas generico a esto
+       //Esto evita que el debugger se detenga cada vez que se recarga flask
+       //3hs perdidas gracias a esto
+      "django": true
+    }
+  ]
+}

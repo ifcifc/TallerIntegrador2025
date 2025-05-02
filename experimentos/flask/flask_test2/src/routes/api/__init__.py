@@ -1,5 +1,5 @@
 from flask import Blueprint
-from route import RouteInfo
+from core.route import RouteInfo
 import routes.api.models
 
 #Si no se separa la inicializacion del blueprint de la RouteInfo, python se vuelve loco
