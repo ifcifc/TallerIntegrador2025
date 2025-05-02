@@ -20,7 +20,12 @@
         },
         {
             "path": "experimentos/fastapi/01-test"
+        },
+        {
+            "path": "experimentos/flask/flask_test2"
         }
     ],
-    "settings": {}
+    "settings": {
+        "editor.insertSpaces": true
+    }
 }
