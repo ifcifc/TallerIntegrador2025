@@ -29,7 +29,15 @@ def login(usuario_service: Injected[UsuarioService], jwt_token_service: Injected
     if not query.verify_password(login_data['password']):
         return jsonify({"error": "Contraseña inválida"}), 401
 
-    access_token = jwt_token_service.create_access_token(id_usuario=0, identity=str(query.id), additional_claims={
+    tokens = jwt_token_service.get_tokens_by_user(query.id)
+    #Solo un token por usuario
+    if len(tokens) > 0:
+        # Revocar tokens existentes
+        for token in tokens:
+            jwt_token_service.revoke_token(token)
+
+
+    access_token = jwt_token_service.create_access_token(id_usuario=query.id, identity=str(query.id), additional_claims={
         'name': query.name,
         'email': query.email
     })

@@ -51,3 +51,13 @@ class JwtTokenService:
         if jti in _jwt_token_cache:
             return _jwt_token_cache[jti]
         return None
+    
+    def get_tokens_by_user(self, id_usuario:int)-> tuple:
+        tokens = []
+        for jti, token in _jwt_token_cache.items():
+            if token["id_usuario"] == id_usuario:
+                tokens.append({
+                    "jti": jti,
+                    "meta": token
+                })
+        return tuple(tokens)
