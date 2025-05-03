@@ -1,10 +1,10 @@
 from core.app_core import app, wireup_cotainer
 import core.database as database
-import core.route as route
+import core.service as service
 
 
 database.init(app)
-route.init(app)
+service.init(app)
 database.create_all(app)
 
 wireup_cotainer.init(app)

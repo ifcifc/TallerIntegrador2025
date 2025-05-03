@@ -31,10 +31,11 @@ class UsuarioModelSchema(SQLAlchemyAutoSchema):
         include_relationships = False  # No incluir relaciones
         include_fk = False  # No incluir claves foráneas
         sqla_session = db.session
-    
+        exclude = ('_password',)
     # Solo especificamos que name es requerido (como en el modelo original)
     name = auto_field(required=True)
     email = auto_field(required=True)
+    
 
 class LoginSchema(Schema):
     email = fields.String(required=True, validate=validate.Length(min=1))

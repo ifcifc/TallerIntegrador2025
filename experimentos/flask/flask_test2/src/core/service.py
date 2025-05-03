@@ -2,7 +2,7 @@ import pkgutil
 from types import ModuleType
 from typing import Any, List
 from flask import Blueprint
-import routes
+import services
 from core.app_core import wireup_cotainer
 
 class RouteInfo:
@@ -14,11 +14,10 @@ class RouteInfo:
         self.parameters = parameters
 
 def init(app):
-    app_services, service_modules = [],[]
-    #pkgutil.iter_modules obtiene los modulos en el paquete routes
-    for _, module_name, _ in pkgutil.iter_modules(routes.__path__):
+    #pkgutil.iter_modules obtiene los modulos en el paquete services
+    for _, module_name, _ in pkgutil.iter_modules(services.__path__):
         #Cargo el modulo
-        module = __import__(f'routes.{module_name}', fromlist=['route_info'])
+        module = __import__(f'services.{module_name}', fromlist=['route_info'])
 
         #Si existe el blueprint lo registro
         if module is not None and "route_info" in module.__dict__:

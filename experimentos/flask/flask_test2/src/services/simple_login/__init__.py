@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from core.route import RouteInfo
+from core.service import RouteInfo
 from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
 
 #Si no se separa la inicializacion del blueprint de la RouteInfo, python se vuelve loco
@@ -23,5 +23,5 @@ def hello_world():
 
 @_bp.route("/")
 def index():
-    return render_template("index_admin.html")
+    return render_template("index.html")
 

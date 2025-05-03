@@ -2,7 +2,7 @@ from typing import List
 
 from wireup import Injected, service
 from core.database import DatabaseService
-from routes.core.models.usuario_model import LoginSchema, UsuarioModel, UsuarioModelSchema
+from services.core.models.usuario_model import LoginSchema, UsuarioModel, UsuarioModelSchema
 
 usuario_models_schema = UsuarioModelSchema(many=True)
 usuario_model_schema = UsuarioModelSchema()
