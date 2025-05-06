@@ -1,11 +1,14 @@
 import datetime
 from typing import Any
-from flask import jsonify
+from flask import jsonify, make_response
 from flask_jwt_extended import create_access_token, decode_token
 from cachetools import TTLCache
 import jwt
 from wireup import service
-from core.app_core import jwt, app
+
+
+
+from app_core import app, jwt
 
 #Cache de tokens JWT para evitar que accedan a los servicion con un token revocado
 #Tambien podria usarse para almacenar algunos metadatos del token para evitar la sobrecarga del token y la DB
@@ -18,7 +21,13 @@ def check_if_token_is_revoked(jwt_header, jwt_payload: dict):
 
 @jwt.expired_token_loader
 def expired_token_callback(jwt_header, jwt_payload):
-    response = jsonify({"msg": "Token ha expirado, elimina la cookie"})
+    response = jsonify({"msg": "Token ha expirado"})
+    response.set_cookie("access_token_cookie", "", expires=0) 
+    return response, 401
+
+@jwt.revoked_token_loader
+def expired_token_callback(jwt_header, jwt_payload):
+    response = jsonify({"msg": "Token ha sido revocado"})
     response.set_cookie("access_token_cookie", "", expires=0) 
     return response, 401
 
@@ -27,27 +36,27 @@ class JwtTokenService:
     def __init__(self):
         pass
 
-    def create_access_token(self, id_usuario:int, perms=[], **kwargs) -> str:
+    def create_access_token(self, id_usuario:int, perms:set=[], **kwargs) -> str:
         token = create_access_token(**kwargs)
         decoded_token = decode_token(token)
         jti = decoded_token["jti"]
         _jwt_token_cache[jti] = {
             "create_at": datetime.datetime.now(),
             "id_usuario": id_usuario,
-            "perms": perms
+            "perms": set(perms)
         }
         
         return token
     
-    def revoke_token(self, token):
+    def revoke_token(self, token:dict):
         jti = token["jti"]
         if jti in _jwt_token_cache:
             del _jwt_token_cache[jti]
     
-    def is_valid_token(self, token) -> bool:
+    def is_valid_token(self, token:dict) -> bool:
         return token["jti"] in _jwt_token_cache
     
-    def get_token_meta(self, token) -> Any|None:
+    def get_token_meta(self, token:dict) -> Any|None:
         jti = token["jti"]
         if jti in _jwt_token_cache:
             return _jwt_token_cache[jti]

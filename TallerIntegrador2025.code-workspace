@@ -23,6 +23,9 @@
         },
         {
             "path": "experimentos/flask/flask_test2"
+        },
+        {
+            "path": "experimentos/flask/flask_test3"
         }
     ],
     "settings": {
