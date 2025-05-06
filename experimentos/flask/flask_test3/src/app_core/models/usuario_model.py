@@ -37,3 +37,5 @@ class UsuarioModel(db.Model):
         else:
             self.permisos.append(id_permission)
 
+    def get_permissions(self):
+        return [permiso.name for permiso in self.permisos]

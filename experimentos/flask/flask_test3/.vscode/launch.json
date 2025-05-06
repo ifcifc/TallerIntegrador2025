@@ -5,7 +5,7 @@
       "name": "Flask: Debug con Hot Reload",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/src/app.py", // Ajusta al nombre y ruta de tu archivo principal
+      "program": "${workspaceFolder}/src/flask_app.py", // Ajusta al nombre y ruta de tu archivo principal
       "console": "integratedTerminal",
       "justMyCode": true,
        //Por que esto funciona con Flask, es un misterio 

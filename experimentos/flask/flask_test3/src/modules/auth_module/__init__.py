@@ -2,6 +2,7 @@ from flask import Blueprint, make_response
 from flask_jwt_extended import set_access_cookies
 from wireup import Injected
 
+from app_core.models.usuario_model import UsuarioModel
 from app_core.module_loader import ModuleInfo
 from app_core.security.decorators.permissions import api_access
 from app_core.security.services.jwt_token_service import JwtTokenService
@@ -19,8 +20,10 @@ def hello_world(usuarios: Injected[UsuarioService]):
 
 @_bp.route("/login")
 @api_access(is_public=True)
-def login(jwt_token_service: Injected[JwtTokenService]):
-    access_token = jwt_token_service.create_access_token(id_usuario=0, perms=["root.index"], identity=str(0))
+def login(jwt_token_service: Injected[JwtTokenService], usuarios: Injected[UsuarioService]):
+    usuario:UsuarioModel = usuarios.get_by_email("admin")
+    
+    access_token = jwt_token_service.create_access_token(id_usuario=usuario.id, perms=usuario.get_permissions(), identity=str(usuario.id))
     response=make_response("login :3")
     set_access_cookies(response, access_token)
     return response, 200
