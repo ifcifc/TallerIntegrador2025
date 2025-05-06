@@ -1,9 +1,9 @@
-from app_core import app, database, microservice, wireup_cotainer
+from app_core import app, database, module_loader, wireup_cotainer
 from app_core import security
 
 
 database.init(app)
-microservice.init(app)
+module_loader.init(app)
 database.create_all(app)
 
 wireup_cotainer.init(app)

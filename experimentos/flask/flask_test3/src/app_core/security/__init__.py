@@ -1,34 +1,40 @@
-from types import SimpleNamespace
 from flask import abort, request
 from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
 from app_core import app, wireup_cotainer
-from app_core.security.services.jwt_token_service import JwtTokenService
+from .proxy_request import proxy_services
+from .services.jwt_token_service import JwtTokenService
 
 wireup_cotainer.add_service(JwtTokenService)
-
-def proxy_services(path:str):
-    proxies = {
-        "/": SimpleNamespace(api="http://127.0.0.1:5001", is_public=True, access_permissions={})
-    }
-    return proxies.get(path, None)
 
 def init():
     @app.before_request
     @jwt_required(optional=True)
     def authenticate_request():
         endpoint = request.endpoint
-        if endpoint is None:
-            proxy_service = proxy_services(request.pat)
-            if proxy_service:
-                pass
-            else: 
-                abort(404, description=f"Endpoint desconocido {request.path}")
         
-        view_func = app.view_functions.get(endpoint)
-        if hasattr(view_func, "_security_metadata"):
-            meta = view_func._security_metadata
-            verify(meta)
+        if request.path.startswith("/service/"):
+            path = request.path.removeprefix("/service/").rstrip("/")
+            proxy_service = proxy_services(path)
 
+            if proxy_service is None:
+                service, _ = path.split('/',1)
+                proxy_service = proxy_services(service)
+                if (not proxy_service is None) and (not proxy_service.all_paths):
+                    abort(401, description=f"El endpoint <{path}> no es publico")
+
+            if proxy_service:
+                verify(proxy_service)
+            else:
+                abort(404, description=f"Servicio desconocido {request.path}")
+        elif endpoint is None:
+            abort(404, description=f"Endpoint desconocido {request.path}")
+        else:
+            view_func = app.view_functions.get(endpoint)
+            if hasattr(view_func, "_security_metadata"):
+                meta = view_func._security_metadata
+                verify(meta)
+            else:
+                abort(401, description=f"El endpoint <{endpoint}> no es publico")
 
 def verify(meta):
     if not meta.is_public:
@@ -46,5 +52,4 @@ def verify(meta):
         else:
             abort(401, description=f"Acceso no autorizado, falta token de acceso")
         
-    else:
-        abort(401, description=f"El endpoint <{endpoint}> no es publico")
+    

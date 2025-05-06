@@ -2,7 +2,7 @@ from flask import Blueprint, make_response
 from flask_jwt_extended import set_access_cookies
 from wireup import Injected
 
-from app_core.microservice import ModuleInfo
+from app_core.module_loader import ModuleInfo
 from app_core.security.decorators.permissions import api_access
 from app_core.security.services.jwt_token_service import JwtTokenService
 from app_core.services.usuario_service import UsuarioService

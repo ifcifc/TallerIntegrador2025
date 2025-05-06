@@ -11,7 +11,6 @@ app.config.from_file("../config.json", load=json.load)
 jwt = JWTManager(app)
 wireup_cotainer = WireupContainer()
 
-
 #Se carga aca para evitar las referencias circulares, cosas de python
 from .models import *
 from app_core.services.usuario_service import UsuarioService
