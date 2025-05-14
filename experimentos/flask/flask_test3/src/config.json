@@ -3,5 +3,6 @@
     "JWT_SECRET_KEY":"74ac975df0174d655b5c9e2290a286c6d7f54a1a5f9d3a8763c36100c9c669bb",
     "JWT_ACCESS_TOKEN_EXPIRES": 600,
     "JWT_TOKEN_LOCATION": ["headers", "cookies", "json", "query_string"],
-    "JWT_COOKIE_SECURE": false
+    "JWT_COOKIE_SECURE": false,
+    "JWT_ACCESS_COOKIE_PATH": "/"
 }

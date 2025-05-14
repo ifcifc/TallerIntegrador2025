@@ -1,6 +1,7 @@
 from flask import Flask, json
 from flask_jwt_extended import JWTManager
 from .wireup_setup import WireupContainer
+from flask_cors import CORS
 
 app = Flask(__name__,                 
             template_folder='../templates',
@@ -8,6 +9,8 @@ app = Flask(__name__,
             static_url_path='/static')
 
 app.config.from_file("../config.json", load=json.load)
+CORS(app, 
+     resources={r"/*": {"origins": "http://localhost:3000", "supports_credentials": True}})
 jwt = JWTManager(app)
 wireup_cotainer = WireupContainer()
 

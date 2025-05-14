@@ -35,6 +35,13 @@ class UsuarioService:
         if return_schema:
             return usuario_models_schema.dump(query)
         else:
+            return query        
+        
+    def get_by_nick(self, nick:str, return_schema=False)-> UsuarioModel|UsuarioModelSchema|None:
+        query = self.database_service.get_session().query(UsuarioModel).filter(UsuarioModel.name == nick).first()
+        if return_schema:
+            return usuario_models_schema.dump(query)
+        else:
             return query
     
     def get_all(self, return_schema=False) -> List[UsuarioModel|UsuarioModelSchema]:
